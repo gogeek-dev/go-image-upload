@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Files Upload</title>
+  </head>
+  <style>
+  .pointer {cursor: pointer;}
+  </style>
+  <body>
+    <form method="post" action="/upload" enctype="multipart/form-data" >
+    <label>Select Image Or File :</label>
+  <input type="file" name="files" id="files" multiple>
+
+      <input class="pointer" type="submit" value="upload" />
+    </form>
+  </body>
+</html>
