@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Upload Files </title>
+    <!-- Bootstrap CSS -->
+   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/responsive.css">
+{{/* <style>
+  div.upload-list:empty {
+   display: none;
+}
+
+	</style> */}}
+
+	<!-- JS -->
+
+  	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+  	
+<div class="upload-wrap" id="myid">
+ 
+		<h2 style="text-align: center;">Upload your File </h2>	
+			
+			<br>
+ <div>
+   {{/* {{$length:= len . }} {{ if gt $length 0 }} */}}
+   {{/* {{ if gt .Count 0 }} */}}
+   {{if . }}
+		<div class="upload-list" >
+			
+      {{ range . }}
+			
+			<div class="ul-row flex" >
+				{{/* {{else}}	 */}}
+				<div class="up-img">
+					<img src="/{{ .Path }}">
+				</div>
+				<div class="up-extn">
+					<h4 class="flex"> {{ .Fname }} <span>{{ .Fsize }} kb</span>  </h4>
+					<div class="up-progress">
+						<span class="w70"></span>
+					</div>
+					<a href="/dele?id={{ .ID }}" class="delete" onclick="return confirm('Are you sure you want to Remove?');"> <img src="assets/img/delete.svg"> </a>
+				</div>
+				
+			</div>
+			
+			{{end }}
+		
+			
+		</div>
+			{{ end }}
+ </div>
+
+		<div class="add-file flex" >
+			<form method="post" action="/uploadfiles" enctype="multipart/form-data">
+			<input style="margin-top:20px" type="file" name="files" multiple required>
+			<h3 class="flex" style="margin-top:-10px"> <img src="assets/img/clip.svg"> <span>Add files</span>  or drop files here </h3>
+			<button class="ripple submit">Submit</button>			
+			</form>
+		</div>
+										
+	</div>
+
+  </body>
+
+ </html>
